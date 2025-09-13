@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="billApp">
+<head>
+  <meta charset="UTF-8">
+  <title>Bill Payment Record</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.3/angular.min.js"></script>
+  <style>
+    body { font-family: Arial, sans-serif; margin: 20px; }
+    table { border-collapse: collapse; width: 100%; margin-top: 20px; }
+    th, td { border: 1px solid #ccc; padding: 8px; text-align: left; }
+    th { background: #eee; }
+    input, button { margin: 5px; padding: 6px; }
+  </style>
+</head>
+<body ng-controller="BillController">
+
+  <h2>Bill Payment Record</h2>
+
+  <!-- Form to add new records -->
+  <form name="billForm" ng-submit="addRecord(billForm)" novalidate>
+    <label>
+      Name:
+      <input type="text" name="name" ng-model="newRecord.name" required>
+    </label>
+    <label>
+      Amount:
+      <input type="number" name="amount" ng-model="newRecord.amount" required min="0">
+    </label>
+    <label>
+      Date:
+      <input type="date" name="date" ng-model="newRecord.date" required>
+    </label>
+    <button type="submit" ng-disabled="billForm.$invalid">Add</button>
+  </form>
+
+  <!-- Records table -->
+  <table ng-if="records.length > 0">
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>Name</th>
+        <th>Amount</th>
+        <th>Date</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr ng-repeat="record in records track by record.id">
+        <td>{{$index + 1}}</td>
+        <td>{{record.name}}</td>
+        <td>{{record.amount | currency}}</td>
+        <td>{{record.date | date:'mediumDate'}}</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <script>
+    angular.module('billApp', [])
+      .controller('BillController', function($scope) {
+        // Initial records
+        $scope.records = [
+          { id: 1, name: 'Electricity', amount: 1200, date: '2025-07-01' },
+          { id: 2, name: 'Internet', amount: 799, date: '2025-07-05' }
+        ];
+
+        $scope.newRecord = {};
+
+        // Add new record
+        $scope.addRecord = function(form) {
+          if (form.$valid) {
+            let newId = $scope.records.length + 1;
+            $scope.records.push({
+              id: newId,
+              name: $scope.newRecord.name,
+              amount: $scope.newRecord.amount,
+              date: $scope.newRecord.date
+            });
+            $scope.newRecord = {};
+            form.$setPristine();
+            form.$setUntouched();
+          }
+        };
+      });
+  </script>
+</body>
+</html>

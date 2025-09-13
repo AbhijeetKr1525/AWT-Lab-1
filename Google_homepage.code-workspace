@@ -1,0 +1,13 @@
+{
+	"folders": [
+		{
+			"path": "../../Google_homepage"
+		},
+		{
+			"path": ".."
+		}
+	],
+	"settings": {
+		"liveServer.settings.multiRootWorkspaceName": "git-scm"
+	}
+}

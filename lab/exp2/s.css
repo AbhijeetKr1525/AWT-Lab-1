@@ -1,0 +1,30 @@
+body {
+  font-family: Arial, sans-serif;
+  margin: 20px;
+  padding-bottom: 1500px;
+}
+.container {
+  margin-bottom: 40px;
+}
+h1 {
+  color: #333;
+}
+.highlighted {
+  border: 5px solid #ff0000;
+  box-shadow: 0 0 10px rgba(255, 0, 0, 0.5);
+}
+#animatedBox {
+  width: 100px;
+  height: 100px;
+  background-color: #ff9800;
+  position: relative;
+}
+button {
+  padding: 10px 15px;
+  margin-right: 10px;
+  cursor: pointer;
+  border: none;
+  border-radius: 5px;
+  background-color: blue;
+  color: white;
+}
