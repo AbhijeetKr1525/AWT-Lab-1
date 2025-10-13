@@ -1,0 +1,42 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <section id="main">
+        <div class="container">
+            <h1 id="heading">Hello World</h1>
+            <button id="btn">Click Me</button>
+            <button>three</button>
+            <button>four</button>
+            <button>five</button>
+            <button>six</button>
+            <p id="demo">This is a paragraph.</p>
+        </div>
+    </section>
+
+    <p class="hidden">This is a hidden paragraph</p>
+    <ul>
+        <li>CSS</li>
+        <li>HTML</li>
+        <li>JS</li>
+        <li>React js</li>
+        <li>Node js</li>
+    </ul>
+
+    <script>
+        $(document).ready(function () {
+            $("p.hidden").hide();
+            $("li:first, li:last").css("background-color", "blue");
+        });
+    </script>
+
+    <script src="script.js"></script>
+</body>
+</html>
