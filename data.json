@@ -28,7 +28,8 @@
         { "name": "Experiment 2", "path": "lab/exp2/index.html" },
         { "name": "Experiment 3", "path": "lab/exp3/index.html" },
         { "name": "Experiment 4 - Bill", "path": "lab/exp4/bill.html" },
-        { "name": "Experiment 4 - Form", "path": "lab/exp4/Registrationform.html" }
+        { "name": "Experiment 4 - Form", "path": "lab/exp4/Registrationform.html" }        
+
       ]
     }
   ]

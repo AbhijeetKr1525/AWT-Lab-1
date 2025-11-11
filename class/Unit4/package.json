@@ -1,0 +1,17 @@
+{
+  "name": "unit4",
+  "version": "1.0.0",
+  "description": "app",
+  "repository": {
+    "type": "git",
+    "url": "abhijeetkr1525"
+  },
+  "license": "ISC",
+  "author": "abhijeet",
+  "type": "commonjs",
+  "main": "app.js",
+  "scripts": {
+    "test": "\"echo\\\"error:no test specified\\\"&& exit 1\"",
+    "dev": "node app.js"
+  }
+}
