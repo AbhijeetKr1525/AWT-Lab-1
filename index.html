@@ -1,46 +1,89 @@
 <!DOCTYPE html>
 <html lang="en" ng-app="myApp">
 <head>
-    <meta charset="UTF-8">
-    <title>AWT Progress</title>
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
-    <link rel="stylesheet" href="s.css">
+  <meta charset="UTF-8">
+  <title>AWT Progress</title>
+
+  <!-- ✅ AngularJS library -->
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+
+  <!-- ✅ External CSS -->
+  <link rel="stylesheet" href="s.css">
+
+  <style>
+    /* Optional fallback styling (in case s.css not loaded) */
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f8f9fa;
+      color: #333;
+      padding: 20px;
+    }
+    h1 {
+      text-align: center;
+      color: #007bff;
+    }
+    .folder {
+      background: #fff;
+      border-radius: 12px;
+      padding: 15px;
+      margin: 15px 0;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    }
+    .subfolder {
+      margin-left: 25px;
+      padding: 10px;
+      border-left: 3px solid #007bff;
+    }
+    a {
+      text-decoration: none;
+      color: #007bff;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
+  </style>
 </head>
+
 <body ng-controller="MainCtrl">
-    <h1>AWT Progress</h1>
-<div class="folder" ng-repeat="folder in data.Class">
+  <h1>AWT Progress</h1>
+
+  <!-- ✅ Display folders and files dynamically -->
+  <div class="folder" ng-repeat="folder in data.Class">
     <h2>{{folder.name}}</h2>
 
-    <!-- If the folder has subfolders (Class) -->
+    <!-- Subfolders -->
     <div class="subfolder" ng-repeat="sub in folder.subfolders">
-        <h3>{{sub.name}}</h3>
-        <ul>
-            <li ng-repeat="file in sub.files">
-                <a ng-href="{{file.path}}">{{file.name}}</a>
-            </li>
-        </ul>
+      <h3>{{sub.name}}</h3>
+      <ul>
+        <li ng-repeat="file in sub.files">
+          <a ng-href="{{file.path}}" target="_blank">{{file.name}}</a>
+        </li>
+      </ul>
     </div>
 
-    <!-- If the folder has direct files (Lab Experiments) -->
+    <!-- Direct files -->
     <ul ng-if="folder.files">
-        <li ng-repeat="file in folder.files">
-            <a ng-href="{{file.path}}">{{file.name}}</a>
-        </li>
+      <li ng-repeat="file in folder.files">
+        <a ng-href="{{file.path}}" target="_blank">{{file.name}}</a>
+      </li>
     </ul>
-</div>
+  </div>
 
-
-    <script>
-        angular.module('myApp', [])
-            .controller('MainCtrl', function($scope, $http) {
-                $http.get('data.json')
-                    .then(function(response) {
-                        $scope.data = response.data;
-                    })
-                    .catch(function(error) {
-                        console.error("Error fetching data:", error);
-                    });
-            });
-    </script>
+  <!-- ✅ AngularJS App Script -->
+  <script>
+    angular.module('myApp', [])
+      .controller('MainCtrl', function($scope, $http) {
+        // Use relative path for GitHub Pages (same folder)
+        $http.get('data.json')
+          .then(function(response) {
+            $scope.data = response.data;
+            console.log("Data loaded:", response.data);
+          })
+          .catch(function(error) {
+            console.error("Error fetching data:", error);
+          });
+      });
+  </script>
 </body>
 </html>
+
