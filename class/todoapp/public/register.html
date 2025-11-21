@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head><title>Register</title></head>
+<body>
+
+  <h2>Register</h2>
+
+  <form id="regForm">
+    <input id="username" placeholder="Username"><br>
+    <input id="password" type="password" placeholder="Password"><br>
+    <button>Register</button>
+  </form>
+
+<script>
+document.getElementById("regForm").onsubmit = async(e)=>{
+  e.preventDefault();
+
+  let res = await fetch("/register", {
+    method:"POST",
+    headers:{ "Content-Type":"application/json" },
+    body:JSON.stringify({
+      username:username.value,
+      password:password.value
+    })
+  });
+
+  let data = await res.json();
+  alert(data.message || data.error);
+};
+</script>
+
+</body>
+</html>
